@@ -1,11 +1,14 @@
 import React from 'react'
+import './About.scss';
+import { Routes } from 'react-router-dom';
 
-const about = () => {
+
+const About = () => {
   return (
     <div>
-      
+    hello
     </div>
   )
 }
 
-export default about
+export default About
