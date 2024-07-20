@@ -2,6 +2,7 @@ import React from 'react';
 import './about.scss';
 import Sidebar from '../sidebar/sidebar';
 import { Outlet } from 'react-router-dom';
+import Home from '../home/home';
 
 const About = () => {
   return (
@@ -16,12 +17,7 @@ const About = () => {
           <span className='bottom-tag-html'>&lt;/html&gt;</span>
         </span>
       </div>
-
-      <div className='container home-page'>
-        <div className='text-zone'>
-          <h1>Hi, <br/>I'm</h1>
-        </div>
-      </div>
+      <Home></Home>
     </div>
   );
 }
