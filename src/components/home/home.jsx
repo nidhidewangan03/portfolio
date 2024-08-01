@@ -21,7 +21,7 @@ const Home = () => {
         <h1>I'm Nidhi Dewangan <br/></h1>
         <h2>Designer and Developer</h2>
         <h3>Frontend Developer | UI/UX Designer</h3>
-        <Link _download className='flat-button'>Download Resume</Link>
+        <a className='flat-button' href="/NidhiDewangan_Resume.pdf" download>Download Resume</a>
         </div>
       </div>
   )

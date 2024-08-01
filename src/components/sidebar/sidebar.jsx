@@ -13,20 +13,20 @@ const Sidebar = () => {
         <img src={logo} alt="logo" />
       </Link>
       <nav>
-        <NavLink exact = "true" activeclassName = "active" to = '/'>
-          <FontAwesomeIcon icon={faHome} color='#e6e6e6' />
+        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <FontAwesomeIcon icon={faHome} color="#e6e6e6" />
         </NavLink>
 
-        <NavLink exact = "true" activeclassName = "skill-link" to = '/skill'>
-          <FontAwesomeIcon icon={faStar} color='#e6e6e6' />
+        <NavLink to="/skill" className={({ isActive }) => (isActive ? 'skill-link' : '')}>
+          <FontAwesomeIcon icon={faStar} color="#e6e6e6" />
         </NavLink>
 
-        <NavLink exact = "true" activeclassName = "experience-link" to = '/experience'>
-          <FontAwesomeIcon icon={faBriefcase} color='#e6e6e6' />
+        <NavLink to="/experience" className={({ isActive }) => (isActive ? 'experience-link' : '')}>
+          <FontAwesomeIcon icon={faBriefcase} color="#e6e6e6" />
         </NavLink>
 
-        <NavLink exact = "true" activeclassName = "contact-link" to = '/contact'>
-          <FontAwesomeIcon icon={faEnvelope} color='#e6e6e6' />
+        <NavLink to="/contact" className={({ isActive }) => (isActive ? 'contact-link' : '')}>
+          <FontAwesomeIcon icon={faEnvelope} color="#e6e6e6" />
         </NavLink>
       </nav>
       <ul>
