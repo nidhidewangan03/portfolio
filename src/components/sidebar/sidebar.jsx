@@ -2,9 +2,8 @@ import "./sidebar.scss"
 import logo from '../../assests/logo.png'
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faHome, faBriefcase , faStar } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faHome, faBriefcase , faStar , faUser} from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin , faGithub} from '@fortawesome/free-brands-svg-icons';
-
 
 const Sidebar = () => {
   return (
@@ -15,6 +14,10 @@ const Sidebar = () => {
       <nav>
         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
           <FontAwesomeIcon icon={faHome} color="#e6e6e6" />
+        </NavLink>
+
+        <NavLink to="/about" className={({ isActive }) => (isActive ? 'about-link' : '')}>
+          <FontAwesomeIcon icon={faUser} color="#e6e6e6" />
         </NavLink>
 
         <NavLink to="/skill" className={({ isActive }) => (isActive ? 'skill-link' : '')}>

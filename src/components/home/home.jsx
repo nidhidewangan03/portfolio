@@ -1,7 +1,6 @@
 import React from 'react'
 import './home.scss'; 
 import { ReactTyped } from "react-typed";
-import { Link } from 'react-router-dom';
 // import file from '../../assests/NidhiDewangan_Resume.pdf'
 
 const Home = () => {
