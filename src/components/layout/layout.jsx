@@ -39,8 +39,7 @@
               </video>
             </>
           )}
-              <Outlet /> {/* Render nested routes if using react-router */}
-              <Home /> {/* Display Home component */}
+              <Outlet /> {/* Render nested routes if using react-router */}             
         </div>
       </div>
     );

@@ -12,13 +12,14 @@ import Home from './components/home/home';
 function App() {
   return (
     <> 
-      <Routes>     
-        <Route path="/" element={<Layout/>} />
-        {/* <Route index element={<Home />} /> */}
-        <Route path="about" element={<About />} />
-        <Route path="/skill" element={<Skill />} />
-        <Route path="/experience" element={<Experience />} />
-        <Route path="/contact" element={<Contact />} />
+       <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} /> {/* Default component when no sub-route is specified */}
+          <Route path="about" element={<About />} />
+          <Route path="skill" element={<Skill />} />
+          <Route path="experience" element={<Experience />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
       </Routes>
     </>
   );
