@@ -11,27 +11,6 @@
     position: absolute;
     top: 0%;
     left: 0;
-
-    #video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover; /* Ensures the video covers the entire container */
-      z-index: -2;
-      animation-delay: 7s;
-    }
-
-    .responsive-image{
-      position: fixed;
-      bottom: 0;
-      right: 90px;
-      height: 70%;
-      max-width: 100%;
-      z-index: -2;
-
-    }
   }
   
 .top-tags {
