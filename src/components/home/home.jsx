@@ -1,10 +1,13 @@
-import React , { useRef, useEffect, useState } from 'react'
+import React , { useEffect, useState } from 'react'
 import './home.scss'; 
 import { ReactTyped } from "react-typed";
 import Video from '../../assests/background.mp4';
-
+ 
 const Home = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1024);
+  // const [letterClass, setLetterClass] = useState('text-animate')
+  // const nameArray = ['N','i','d','h','i','','D','e','w','a','n','g','a','n']
+  // const designation = ['D','e','v','e','l','o','p','e','r','','D','e','s','i','g','n','e','r']
 
     useEffect(() => {
       const handleResize = () => {
@@ -44,9 +47,9 @@ const Home = () => {
           cursorChar="|"
           showCursor={true}
         /></h3>
-        {/* <h2>Hello</h2> */}
-        <h1>I'm Nidhi Dewangan <br/></h1>
+        <h1>I'm <span>Nidhi Dewangan </span><br/></h1>
         <h2>Designer and Developer</h2>
+        {/* <Animate letterClass= {letterClass} strArray={designation} idx={}/> */}
         <h3>Frontend Developer | UI/UX Designer</h3>
         <a className='flat-button' href="/NidhiDewangan_Resume.pdf" download>Download Resume</a>
         </div>

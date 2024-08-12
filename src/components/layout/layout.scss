@@ -47,9 +47,117 @@
   animation-delay: 1s;
 }
 
+.container.contact-page,
+.container.about-page,
+.container.portfolio-page {
+  
+    h1 {
+      font-size: 53px;
+      font-family: 'Roboto';
+      color: #22fffc;
+      font-weight: 400;
+      margin-top: 0;
+      position: relative;
+      animation-delay: 10s;
+
+      &:before {
+        font-family: 'Roboto';
+        color: #22fffc;
+        font-size: 18px;
+        position: absolute;
+        margin-top: -10px;
+        left: -10px;
+        opacity: 0.6;
+        line-height: 18px;
+      }
+
+      &:after {
+        font-family: 'Roboto';
+        color: #22fffc;
+        font-size: 18px;
+        line-height: 18px;
+        position: absolute;
+        left: -30px;
+        bottom: -20px;
+        margin-left: 20px;
+        opacity: 0.6;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      color: #fff;
+      left: -5px;
+      font-family: 'Roboto';
+      font-weight: 300;
+      max-width: fit-content;
+      // animation: ease-in-out linear 1s;
+      animation-delay: 2s;
+    }
+
+    .text-zone {
+      position: absolute;
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 35%;
+      vertical-align: middle;
+      display: table-cell;
+      max-height: 90%;
+    }
+
+  .text-animate-hover {
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
 @media screen and (max-width: 1200px) {
 
   .page{
     width:40%;
+  }
+
+  .container {
+    position: initial;
+    height: auto;
+    min-height: auto;
+
+  &.contact-page,
+  &.about-page,
+  &.portfolio-page {
+    .text-zone {
+      position: initial;
+      transform: none;
+      width: 100%;
+      display: block;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+  }
+
+  &.portfolio-page {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    h1.page-title {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
+    .image-box {
+      height: 200px;
+      max-width: calc(50% - 10px);
+    }
+  }
+  }
+
+  .stage-cube-cont {
+    position: initial;
+    width: 100%;
+    height: 0%;
+    overflow: visible;
   }
 }
