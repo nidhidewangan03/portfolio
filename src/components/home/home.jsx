@@ -51,7 +51,6 @@ const Home = () => {
         <h2>Designer and Developer</h2>
         {/* <Animate letterClass= {letterClass} strArray={designation} idx={}/> */}
         <h3>Frontend Developer | UI/UX Designer</h3>
-        <a className='flat-button' href="/NidhiDewangan_Resume.pdf" download>Download Resume</a>
         </div>
       </div>
   )
