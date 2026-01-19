@@ -22,9 +22,9 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    if (isMobile || !videoRef.current) return
-
     const video = videoRef.current
+    if (!video) return
+
     const handleEnded = () => {
       setTimeout(() => {
         video.currentTime = 0
@@ -34,22 +34,19 @@ const Home = () => {
 
     video.addEventListener("ended", handleEnded)
     return () => video.removeEventListener("ended", handleEnded)
-  }, [isMobile])
+  }, [])
 
   return (
-    <div className={`home-page ${isMobile ? 'mobile-view' : ''}`}>
-      {/* Show video only on desktop/tablet */}
-      {!isMobile && (
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          playsInline
-          className="background-video"
-        >
-          <source src={Video} type='video/mp4' />
-        </video>
-      )}
+    <div className='home-page'>
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        playsInline
+        className={isMobile ? "mobile-video" : "desktop-video"}
+      >
+        <source src={Video} type='video/mp4' />
+      </video>
 
       <div className='text-zone'>
         <h3 className='typewriting'>
@@ -66,6 +63,7 @@ const Home = () => {
         <h2>Designer and Developer</h2>
         <h3>Frontend Developer | UI/UX Designer</h3>
       </div>
+      
     </div>
   )
 }
