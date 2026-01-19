@@ -1,122 +1,139 @@
 .home-page {
-    width: 100%;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  .desktop-video,
+  .mobile-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    will-change: contents;
-    // min-height: 566px;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .mobile-video {
+    height: 50vh; // Shorter height for mobile
+    top: auto;
+    bottom: 0;
+  }
+
+  .text-zone {
     position: absolute;
-    // opacity: 0;
-    top: 5%;
-    margin: 0 auto;
-    z-index: 1;
-    transform-style: preserve-3d;
-    animation: fadeIn 2s  forwards;
-    animation-delay: 1s;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(600px, 90%);
+    padding: 20px;
 
     h1 {
-        font-size: 70px;
-        font-family: 'Roboto';
-        color: #ffffff;
-        font-weight: 300;
-        margin-top: 0;
-        position: relative;
-        margin-bottom: -25px;
-        // left: -10px;
-    }
-
-    h3{
-      font-size: 26px;
+      font-size: clamp(32px, 8vw, 70px);
       font-family: 'Roboto';
-      color:#22fffc;
-      font-weight: 200;
-      // margin-top: .5px;    
-    }
-
-    h2{
-      font-size: 50px;
-      font-family: 'Roboto';
-      font-weight: 200;
       color: #ffffff;
-      margin-bottom: 25px;    
-      animation: linear 1s linear both;
-      animation-delay: 1.4s;
-    }
+      font-weight: 300;
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.2;
       
-    .text-zone {
-      position: absolute;
-      left: 10%;
-      top: 30%;
-      transform: translateY(-50%);
-      width: 50%;
-      vertical-align: middle;
-      display: table-cell;
-      max-height: 90%;
-    }
-  
-    .text-animate-hover {
-      &:hover {
-        color: #ffffff;
+      span {
+        color: #22fffc;
       }
     }
 
-    #video {
-      position: fixed;
-      top: 0;
-      bottom: 30px;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover; 
-      /* Ensures the video covers the entire container */
-      z-index: -2;
-      animation-delay: 7s;
+    h2 {
+      font-size: clamp(20px, 5vw, 50px);
+      font-family: 'Roboto';
+      font-weight: 200;
+      color: #ffffff;
+      margin-bottom: 15px;
+      line-height: 1.3;
     }
 
-    .responsive-image{
-      position: fixed;
-      bottom: 30px;
-      left : 10px;
-      height: 60%;
-      // width: calc(100% - 20px);
-      z-index: -2;
-    }  
+    h3 {
+      font-size: clamp(16px, 4vw, 26px);
+      font-family: 'Roboto';
+      color: #22fffc;
+      font-weight: 200;
+      margin-bottom: 0;
+    }
+
+    .typewriting {
+      font-size: clamp(18px, 4vw, 28px);
+      min-height: 1.5em;
+    }
+  }
 }
 
-@media screen and (max-width: 1200px) {
-  .tags,
-  .home-page h1:before,
-  .home-page h1:after {
-    display: none;
+// Tablet devices (768px to 1024px)
+@media (max-width: 1024px) {
+  .home-page {
+    .text-zone {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+      padding: 15px;
+      
+      h1, h2, h3 {
+        text-align: center;
+      }
+    }
   }
-  h1{
-    font-size: 25px !important;
-    justify-content: center;
-  }
+}
 
-  h3{
-    font-size: 20px !important;
+// Mobile devices (up to 768px)
+@media (max-width: 768px) {
+  .home-page {
+    .mobile-video {
+      height: 40vh;
+    }
+    
+    .text-zone {
+      top: 40%;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5); // Better readability
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      
+      h1 {
+        margin-bottom: 5px;
+        font-size: clamp(28px, 7vw, 45px);
+      }
+      
+      h2 {
+        font-size: clamp(18px, 4.5vw, 35px);
+        margin-bottom: 10px;
+      }
+      
+      h3 {
+        font-size: clamp(14px, 3.5vw, 22px);
+      }
+    }
   }
+}
 
-  .page #video {    
-    width: 0% !important;
-    height: 0% !important;
+// Very small devices (up to 480px)
+@media (max-width: 480px) {
+  .home-page {
+    .text-zone {
+      top: 35%;
+      width: 95%;
+      padding: 15px;
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size: 18px;
+      }
+      
+      h3 {
+        font-size: 14px;
+      }
+    }
   }
-
-  .home-page .text-zone {
-    width: 100%;
-    transform: none;
-    padding: 10px;
-    box-sizing: border-box;
-    top: 20px;
-    margin:5px;
-    margin-left:50px;
-    left: 30%;
-  }
-
-  .home-page .flat-button {
-    display: block;
-    // margin: 20px auto 0 auto;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
 }

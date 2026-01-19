@@ -1,73 +1,118 @@
-import "./sidebar.scss"
-import logo from '../../assests/logo.png'
+import { useState, useEffect } from "react";
+import "./sidebar.scss";
+import logo from '../../assests/logo.png';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faHome, faBriefcase , faStar , faUser} from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin , faGithub} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faHome, faBriefcase, faStar, faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Sidebar = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      if (!mobile) setMenuOpen(false); // Close menu on desktop resize
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    if (isMobile) {
+      setMenuOpen(false);
+    }
+  };
+
+  const socialLinks = (
+    <ul className="social-links">
+      <li>
+        <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/nidhidewangan03/">
+          <FontAwesomeIcon icon={faLinkedin} color="#e6e6e6" />
+        </a>
+      </li>
+      <li>
+        <a target="_blank" rel="noreferrer" href="https://github.com/nidhidewangan03">
+          <FontAwesomeIcon icon={faGithub} color="#e6e6e6" />
+        </a>
+      </li>
+      <li>
+        <a target="_blank" rel="noreferrer" href="mailto:nidhidew2003@gmail.com">
+          <FontAwesomeIcon icon={faEnvelope} color="#e6e6e6" />
+        </a>
+      </li>
+    </ul>
+  );
+
+  const navLinks = (
+    <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+      <NavLink to="/" onClick={closeMenu}>
+        <FontAwesomeIcon icon={faHome} />
+        <span>Home</span>
+      </NavLink>
+      <NavLink to="/about" onClick={closeMenu}>
+        <FontAwesomeIcon icon={faUser} />
+        <span>About</span>
+      </NavLink>
+      <NavLink to="/skill" onClick={closeMenu}>
+        <FontAwesomeIcon icon={faStar} />
+        <span>Skills</span>
+      </NavLink>
+      <NavLink to="/experience" onClick={closeMenu}>
+        <FontAwesomeIcon icon={faBriefcase} />
+        <span>Experience</span>
+      </NavLink>
+      <NavLink to="/contact" onClick={closeMenu}>
+        <FontAwesomeIcon icon={faEnvelope} />
+        <span>Contact</span>
+      </NavLink>
+    </nav>
+  );
+
   return (
-    <div className="nav-bar">
-      <Link className='logo' to='/'>
-        <img src={logo} alt="logo" />
-      </Link>
-      <nav>
-        {/* <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <FontAwesomeIcon icon={faHome} color="#e6e6e6" />
-        </NavLink>
+    <>
+      {/* Desktop Sidebar */}
+      {!isMobile && (
+        <div className="nav-bar desktop-sidebar">
+          <Link className='logo' to='/'>
+            <img src={logo} alt="logo" />
+          </Link>
+          {navLinks}
+          {socialLinks}
+        </div>
+      )}
 
-        <NavLink to="/about" className={({ isActive }) => (isActive ? 'about-link' : '')}>
-          <FontAwesomeIcon icon={faUser} color="#e6e6e6" />
-        </NavLink>
-
-        <NavLink to="/skill" className={({ isActive }) => (isActive ? 'skill-link' : '')}>
-          <FontAwesomeIcon icon={faStar} color="#e6e6e6" />
-        </NavLink>
-
-        <NavLink to="/experience" className={({ isActive }) => (isActive ? 'experience-link' : '')}>
-          <FontAwesomeIcon icon={faBriefcase} color="#e6e6e6" />
-        </NavLink>
-
-        <NavLink to="/contact" className={({ isActive }) => (isActive ? 'contact-link' : '')}>
-          <FontAwesomeIcon icon={faEnvelope} color="#e6e6e6" />
-        </NavLink> */}
-        
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <FontAwesomeIcon icon={faHome} color="#e6e6e6" />
-        </NavLink>
-        <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <FontAwesomeIcon icon={faUser} color="#e6e6e6" />
-        </NavLink>
-        <NavLink to="/skill" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <FontAwesomeIcon icon={faStar} color="#e6e6e6" />
-        </NavLink>
-        <NavLink to="/experience" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <FontAwesomeIcon icon={faBriefcase} color="#e6e6e6" />
-        </NavLink>
-        <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <FontAwesomeIcon icon={faEnvelope} color="#e6e6e6" />
-        </NavLink>
-      </nav>
-      <ul>
-          <li>
-              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/nidhidewangan03/">
-                  <FontAwesomeIcon icon={faLinkedin} color="#e6e6e6" />
-              </a>
-          </li>
-          <li>
-                <a target="_blank" rel="noreferrer" href="https://github.com/nidhidewangan03">
-                    <FontAwesomeIcon icon={faGithub} color="#e6e6e6" />
-                </a>
-          </li>
-          <li>
-                <a target="_blank" rel="noreferrer" href="mailto:nidhidew2003@gmail.com">
-                    <FontAwesomeIcon icon={faEnvelope} color="#e6e6e6" />
-                </a>
-          </li>
-
-      </ul>
-      
-    </div>
+      {/* Mobile Header */}
+      {isMobile && (
+        <div className="mobile-header">
+          <div className="mobile-top-bar">
+            <Link className='logo' to='/'>
+              <img src={logo} alt="logo" />
+            </Link>
+            <button className="menu-toggle" onClick={toggleMenu}>
+              <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} size="lg" />
+            </button>
+          </div>
+          
+          {/* Mobile Menu Overlay */}
+          <div className={`mobile-menu-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu}>
+            <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()}>
+              {navLinks}
+              <div className="mobile-social-links">
+                {socialLinks}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

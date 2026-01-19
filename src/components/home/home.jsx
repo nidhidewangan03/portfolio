@@ -1,58 +1,72 @@
-import React , { useEffect, useState } from 'react'
-import './home.scss'; 
-import { ReactTyped } from "react-typed";
-import Video from '../../assests/background.mp4';
- 
+import React, { useEffect, useRef, useState } from 'react'
+import './home.scss'
+import { ReactTyped } from "react-typed"
+import Video from '../../assests/background.mp4'
+
 const Home = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1024);
-  // const [letterClass, setLetterClass] = useState('text-animate')
-  // const nameArray = ['N','i','d','h','i','','D','e','w','a','n','g','a','n']
-  // const designation = ['D','e','v','e','l','o','p','e','r','','D','e','s','i','g','n','e','r']
+  const [isMobile, setIsMobile] = useState(
+    window.innerWidth <= 768
+  )
 
-    useEffect(() => {
-      const handleResize = () => {
-        setIsSmallScreen(window.innerWidth <= 1024);
-      };
+  const videoRef = useRef(null)
 
-      window.addEventListener('resize', handleResize);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
 
-      // Clean up the event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-  
-  return (   
-      <div className='home-page'>
-        {isSmallScreen ? (
-            <video autoPlay muted className="responsive-image">
-                <source src={Video} type='video/mp4' />
-                Your browser does not support the video tag.
-            </video>
-          ) : (
-            <>
-              <video autoPlay muted id='video'>
-                <source src={Video} type='video/mp4' />
-                Your browser does not support the video tag.
-              </video>
-            </>
-          )}
+    window.addEventListener('resize', handleResize)
+    handleResize() // Initial check
+    
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
-        <div className='text-zone'>
-        <h3 className='typewriting'><ReactTyped
-          strings={["Namaste ", "Hello ", "Bonjour "]}
-          typeSpeed={100}
-          loop
-          backSpeed={30}
-          cursorChar="|"
-          showCursor={true}
-        /></h3>
-        <h1>I'm <span>Nidhi Dewangan </span><br/></h1>
+  useEffect(() => {
+    if (isMobile || !videoRef.current) return
+
+    const video = videoRef.current
+    const handleEnded = () => {
+      setTimeout(() => {
+        video.currentTime = 0
+        video.play()
+      }, 1000)
+    }
+
+    video.addEventListener("ended", handleEnded)
+    return () => video.removeEventListener("ended", handleEnded)
+  }, [isMobile])
+
+  return (
+    <div className={`home-page ${isMobile ? 'mobile-view' : ''}`}>
+      {/* Show video only on desktop/tablet */}
+      {!isMobile && (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          className="background-video"
+        >
+          <source src={Video} type='video/mp4' />
+        </video>
+      )}
+
+      <div className='text-zone'>
+        <h3 className='typewriting'>
+          <ReactTyped
+            strings={["Namaste ", "Hello ", "Bonjour "]}
+            typeSpeed={100}
+            loop
+            backSpeed={30}
+            cursorChar="|"
+            showCursor={true}
+          />
+        </h3>
+        <h1>I'm <span>Nidhi Dewangan</span><br /></h1>
         <h2>Designer and Developer</h2>
-        {/* <Animate letterClass= {letterClass} strArray={designation} idx={}/> */}
         <h3>Frontend Developer | UI/UX Designer</h3>
-        </div>
       </div>
+    </div>
   )
 }
 
