@@ -23,8 +23,8 @@
 
   .text-zone {
     position: absolute;
-    left: 10%;
-    top: 50%;
+    left: 5%;
+    top: 35%;
     transform: translateY(-50%);
     width: min(600px, 90%);
     padding: 20px;
@@ -57,12 +57,56 @@
       font-family: 'Roboto';
       color: #22fffc;
       font-weight: 200;
-      margin-bottom: 0;
+      margin-bottom: 25px;
     }
 
     .typewriting {
       font-size: clamp(18px, 4vw, 28px);
       min-height: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    // Social Links Styles
+    .home-social-links {
+      display: flex;
+      gap: 25px;
+      margin-top: 30px;
+      justify-content: flex-start;
+      animation: fadeIn 0.8s ease-out 0.5s both;
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(34, 255, 252, 0.1);
+        transition: all 0.3s ease;
+        text-decoration: none;
+
+        svg {
+          font-size: 22px;
+          color: #e6e6e6;
+          transition: all 0.3s ease;
+        }
+
+        &:hover {
+          background: rgba(34, 255, 252, 0.15);
+          border-color: #22fffc;
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(34, 255, 252, 0.2);
+
+          svg {
+            color: #22fffc;
+          }
+        }
+
+        &:active {
+          transform: translateY(-1px);
+        }
+      }
     }
   }
 }
@@ -75,10 +119,24 @@
       transform: translate(-50%, -50%);
       text-align: center;
       width: 90%;
-      padding: 15px;
+      padding: 20px;
       
       h1, h2, h3 {
         text-align: center;
+      }
+
+      .home-social-links {
+        gap: 20px;
+        justify-content: center;
+
+        .social-icon {
+          width: 45px;
+          height: 45px;
+          
+          svg {
+            font-size: 20px;
+          }
+        }
       }
     }
   }
@@ -93,8 +151,8 @@
     
     .text-zone {
       top: 40%;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.5); // Better readability
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
       backdrop-filter: blur(5px);
       
@@ -110,6 +168,22 @@
       
       h3 {
         font-size: clamp(14px, 3.5vw, 22px);
+        margin-bottom: 20px;
+      }
+
+      .home-social-links {
+        margin-top: 25px;
+        gap: 15px;
+        justify-content: center;
+        
+        .social-icon {
+          width: 40px;
+          height: 40px;
+          
+          svg {
+            font-size: 18px;
+          }
+        }
       }
     }
   }
@@ -133,7 +207,75 @@
       
       h3 {
         font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .home-social-links {
+        margin-top: 20px;
+        gap: 12px;
+        justify-content: center;
+        
+        .social-icon {
+          width: 38px;
+          height: 38px;
+          
+          svg {
+            font-size: 16px;
+          }
+        }
       }
     }
+  }
+}
+
+// Landscape mode on mobile
+@media (max-height: 600px) and (max-width: 768px) {
+  .home-page {
+    .text-zone {
+      top: 40%;
+      padding: 10px;
+      
+      h1 {
+        font-size: 20px;
+        margin-bottom: 3px;
+      }
+      
+      h2 {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      
+      h3 {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .home-social-links {
+        margin-top: 15px;
+        gap: 10px;
+        justify-content: flex-start;
+        
+        .social-icon {
+          width: 35px;
+          height: 35px;
+          
+          svg {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Animation for social icons
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

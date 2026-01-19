@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import './home.scss'
 import { ReactTyped } from "react-typed"
 import Video from '../../assests/background.mp4'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(
@@ -62,8 +65,23 @@ const Home = () => {
         <h1>I'm <span>Nidhi Dewangan</span><br /></h1>
         <h2>Designer and Developer</h2>
         <h3>Frontend Developer | UI/UX Designer</h3>
+        
+        {/* Social Icons */}
+        <div className="home-social-links">
+          <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/nidhidewangan03/" 
+             className="social-icon" aria-label="LinkedIn">
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+          <a target="_blank" rel="noreferrer" href="https://github.com/nidhidewangan03" 
+             className="social-icon" aria-label="GitHub">
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+          <a target="_blank" rel="noreferrer" href="mailto:nidhidew2003@gmail.com" 
+             className="social-icon" aria-label="Email">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+        </div>
       </div>
-      
     </div>
   )
 }

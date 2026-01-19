@@ -85,7 +85,7 @@ const Sidebar = () => {
             <img src={logo} alt="logo" />
           </Link>
           {navLinks}
-          {socialLinks}
+          {/* {socialLinks} */}
         </div>
       )}
 
@@ -105,9 +105,9 @@ const Sidebar = () => {
           <div className={`mobile-menu-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu}>
             <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()}>
               {navLinks}
-              <div className="mobile-social-links">
+              {/* <div className="mobile-social-links">
                 {socialLinks}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
