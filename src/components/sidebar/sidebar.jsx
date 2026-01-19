@@ -12,7 +12,7 @@ const Sidebar = () => {
         <img src={logo} alt="logo" />
       </Link>
       <nav>
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+        {/* <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
           <FontAwesomeIcon icon={faHome} color="#e6e6e6" />
         </NavLink>
 
@@ -29,6 +29,22 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink to="/contact" className={({ isActive }) => (isActive ? 'contact-link' : '')}>
+          <FontAwesomeIcon icon={faEnvelope} color="#e6e6e6" />
+        </NavLink> */}
+        
+        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <FontAwesomeIcon icon={faHome} color="#e6e6e6" />
+        </NavLink>
+        <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <FontAwesomeIcon icon={faUser} color="#e6e6e6" />
+        </NavLink>
+        <NavLink to="/skill" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <FontAwesomeIcon icon={faStar} color="#e6e6e6" />
+        </NavLink>
+        <NavLink to="/experience" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <FontAwesomeIcon icon={faBriefcase} color="#e6e6e6" />
+        </NavLink>
+        <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>
           <FontAwesomeIcon icon={faEnvelope} color="#e6e6e6" />
         </NavLink>
       </nav>
