@@ -1,6 +1,6 @@
 import React from 'react';
 import './about.scss';
-import Image from '../../assests/about-img.png';
+import Image from '../../assests/profile-image.png';
 
 const About = () => {
   return (
