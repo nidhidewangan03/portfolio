@@ -1,0 +1,173 @@
+.project-page {
+  top: 5%;
+  width: 100%;
+  min-height: 100vh;
+  color: #ffffff;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+
+  #project {
+    margin-bottom: 40px;
+
+    h1 {
+      font-size: clamp(36px, 7vw, 60px);
+      font-family: 'Roboto', sans-serif;
+      color: #ffffff;
+      font-weight: 400;
+      margin: 0;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100px;
+        height: 3px;
+        background: #20fffc;
+      }
+    }
+  }
+}
+
+// Desktop Layout (1025px and above)
+@media (min-width: 1025px) {
+  .project-page {
+    padding: 60px 80px;
+    gap: 80px;
+
+    .text-zone {
+      padding: 80px 0;
+    }
+
+    #project {
+      h1 {
+        font-size: clamp(48px, 5vw, 64px);
+        
+        &::after {
+          width: 150px;
+        }
+      }
+    }
+  }
+}
+
+// Tablet Layout (768px to 1024px)
+@media (min-width: 768px) and (max-width: 1024px) {
+  .project-page {
+    padding: 40px;
+    gap: 40px;
+
+    #project {
+      h1::after {
+        width: 120px;
+      }
+    }
+  }
+}
+
+// Mobile Layout (up to 767px) - UPDATED FOR NEW STRUCTURE
+@media (max-width: 767px) {
+  .project-page {
+    top: 10%;
+    padding: 20px 15px;
+    min-height: calc(100vh - 70px);
+    overflow-x: hidden; 
+    overflow-y:auto; 
+    // Change to column layout for mobile
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+
+    // Remove the text-zone wrapper's padding
+    .text-zone {
+      padding: 0;
+      width: 100%;
+      max-width: 600px;
+      display:contents; // This makes children flow outside the wrapper
+    }
+
+    // Heading - comes first
+    #project {
+      order: 1;
+      margin-bottom: 25px;
+      width: 100%;
+
+      h1 {
+        font-size: 32px;
+        
+        &::after {
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -8px;
+          width: 80px;
+        }
+      }
+    }
+
+  }
+}
+
+// Very small devices (up to 480px)
+@media (max-width: 480px) {
+  .project-page {
+    #project {
+      h1 {
+        font-size: 24px;
+        
+        &::after {
+          width: 60px;
+          bottom: -6px;
+        }
+      }
+    }
+  }
+}
+
+// Landscape mode on mobile
+@media (max-height: 600px) and (max-width: 767px) {
+  .project-page {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    padding: 30px 20px;
+
+    #project {
+      margin-bottom: 15px;
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
