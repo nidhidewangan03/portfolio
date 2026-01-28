@@ -9,6 +9,7 @@ const About = () => {
         <div id='about'>
           <h1>About Me</h1>
         </div>
+        
         <div id='about-para'>
           <p>
             I am a passionate learner with a keen interest in designing and frontend development.
@@ -17,10 +18,12 @@ const About = () => {
             I am also an active member of several vibrant tech communities, including MLSA, Lottie, GDSC SSTC, and HackClub SSTC.
           </p>
         </div>
-        <a className='flat-button' href="/NidhiDewangan_Resume.pdf" download>
+        
+        <a className='flat-button' href="/Nidhi_Dewangan_Resume.pdf" download>
           Download Resume
         </a>
       </div>
+      
       <div id='about-img'>
         <img 
           src={Image} 

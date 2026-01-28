@@ -1,17 +1,20 @@
 .about-page {
-  top:5%;
+  top: 5%;
   width: 100%;
   min-height: 100vh;
   color: #ffffff;
   position: relative;
   padding: 20px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
 
   .text-zone {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
+    flex: 1;
+    padding: 40px 0;
   }
 
   #about {
@@ -54,12 +57,12 @@
   }
 
   #about-img {
+    flex: 1;
     text-align: center;
-    margin: 40px 0;
-
+    
     img {
       width: 100%;
-      max-width: 300px;
+      max-width: 500px;
       aspect-ratio: 1 / 1;
       object-fit: cover;
       border: 2px solid #989292;
@@ -98,64 +101,11 @@
   }
 }
 
-// Tablet Layout (768px to 1024px)
-@media (min-width: 768px) {
-  .about-page {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 40px;
-    align-items: start;
-    padding: 40px;
-
-    .text-zone {
-      grid-column: 1;
-      grid-row: 1 / span 2;
-      padding: 40px 0;
-    }
-
-    #about {
-      h1::after {
-        width: 120px;
-      }
-    }
-
-    #about-para {
-      p {
-        font-size: clamp(17px, 2vw, 19px);
-      }
-    }
-
-    #about-img {
-      grid-column: 2;
-      grid-row: 1 / span 3;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-      img {
-        max-width: 100%;
-        max-height: 600px;
-        width: auto;
-      }
-    }
-
-    .flat-button {
-      grid-column: 1;
-      grid-row: 3;
-      justify-self: start;
-      align-self: end;
-    }
-  }
-}
-
 // Desktop Layout (1025px and above)
 @media (min-width: 1025px) {
   .about-page {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
     padding: 60px 80px;
+    gap: 80px;
 
     .text-zone {
       padding: 80px 0;
@@ -180,8 +130,7 @@
 
     #about-img {
       img {
-        max-height: 700px;
-        max-width: 100%;
+        max-width: 500px;
       }
     }
 
@@ -192,19 +141,60 @@
   }
 }
 
-// Mobile Layout (up to 767px)
-@media (max-width: 767px) {
+// Tablet Layout (768px to 1024px)
+@media (min-width: 768px) and (max-width: 1024px) {
   .about-page {
-    padding: 20px 15px;
-    min-height: calc(100vh - 70px); // Account for mobile header
-
-    .text-zone {
-      padding: 40px 0;
-    }
+    padding: 40px;
+    gap: 40px;
 
     #about {
-      text-align: center;
-      margin-bottom: 30px;
+      h1::after {
+        width: 120px;
+      }
+    }
+
+    #about-para {
+      p {
+        font-size: clamp(17px, 2vw, 19px);
+      }
+    }
+
+    #about-img {
+      img {
+        max-width: 400px;
+      }
+    }
+  }
+}
+
+// Mobile Layout (up to 767px) - UPDATED FOR NEW STRUCTURE
+@media (max-width: 767px) {
+  .about-page {
+    top: 10%;
+    padding: 20px 15px;
+    min-height: calc(100vh - 70px);
+    overflow-x: hidden; 
+    overflow-y:auto; 
+    // Change to column layout for mobile
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+
+    // Remove the text-zone wrapper's padding
+    .text-zone {
+      padding: 0;
+      width: 100%;
+      max-width: 600px;
+      display:contents; // This makes children flow outside the wrapper
+    }
+
+    // Heading - comes first
+    #about {
+      order: 1;
+      margin-bottom: 25px;
+      width: 100%;
 
       h1 {
         font-size: 32px;
@@ -218,30 +208,47 @@
       }
     }
 
+    // Image - comes second
+    #about-img {
+      order: 2;
+      margin: 0 0 5px 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex: none;
+      
+      img {
+        max-width: 230px;
+        max-height: 230px;
+      }
+    }
+
+    // Paragraph - comes third
     #about-para {
+      order: 3;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+      flex: none;
+
       p {
         text-align: center;
         font-size: 16px;
         line-height: 1.7;
-        margin-bottom: 25px;
-      }
-    }
-
-    #about-img {
-      margin: 30px 0;
-      
-      img {
+        margin-bottom: 0;
         max-width: 100%;
-        max-height: 400px;
       }
     }
 
+    // Button - comes fourth
     .flat-button {
+      order: 4;
       display: block;
       width: fit-content;
       margin: 0 auto;
       text-align: center;
       padding: 14px 28px;
+      flex: none;
     }
   }
 }
@@ -249,13 +256,9 @@
 // Very small devices (up to 480px)
 @media (max-width: 480px) {
   .about-page {
-    .text-zone {
-      padding: 30px 0;
-    }
-
     #about {
       h1 {
-        font-size: 28px;
+        font-size: 24px;
         
         &::after {
           width: 60px;
@@ -264,16 +267,17 @@
       }
     }
 
-    #about-para {
-      p {
-        font-size: 15px;
-        line-height: 1.6;
+    #about-img {
+      img {
+        max-width: 200px;
+        max-height: 200px;
       }
     }
 
-    #about-img {
-      img {
-        max-height: 350px;
+    #about-para {
+      p {
+        font-size: 14px;
+        line-height: 1.6;
       }
     }
 
@@ -287,38 +291,37 @@
 // Landscape mode on mobile
 @media (max-height: 600px) and (max-width: 767px) {
   .about-page {
+    display: flex;
+    flex-direction: column;
     min-height: auto;
-    padding: 40px 20px;
-
-    .text-zone {
-      padding: 20px 0;
-    }
+    padding: 30px 20px;
 
     #about {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
 
       h1 {
         font-size: 26px;
       }
     }
 
-    #about-para {
-      p {
-        font-size: 14px;
-        margin-bottom: 20px;
+    #about-img {
+      margin: 10px 0 20px 0;
+      
+      img {
+        max-height: 200px;
+        max-width: 200px;
       }
     }
 
-    #about-img {
-      margin: 20px 0;
-      
-      img {
-        max-height: 250px;
+    #about-para {
+      p {
+        font-size: 14px;
+        margin-bottom: 15px;
       }
     }
 
     .flat-button {
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 10px 20px;
     }
   }

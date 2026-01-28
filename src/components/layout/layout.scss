@@ -120,9 +120,6 @@
 
 @media screen and (max-width: 1200px) {
 
-  // .page{
-  //   width:40%;
-  // }
   .container {
     position: fixed;
     display: grid;
@@ -147,14 +144,5 @@
 @media only screen and (max-width: 550px) {
   .about-page .about-para{
     width: 50%;
-  }
-  .about-page #about-img {
-      height: 30%;
-      width: 25%; 
-      left: 10px;
-      grid-row-start: 2;
-      grid-row-end: 6;
-      grid-column-start: 4;
-      grid-column-end: 6;
   }
 }
