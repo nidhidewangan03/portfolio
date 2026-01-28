@@ -61,13 +61,13 @@ const Sidebar = () => {
         <FontAwesomeIcon icon={faUser} />
         <span>About</span>
       </NavLink>
-      <NavLink to="/skill" onClick={closeMenu}>
+      <NavLink to="/project" onClick={closeMenu}>
         <FontAwesomeIcon icon={faStar} />
-        <span>Skills</span>
+        <span>Project</span>
       </NavLink>
-      <NavLink to="/experience" onClick={closeMenu}>
+      <NavLink to="/skills-and-experience" onClick={closeMenu}>
         <FontAwesomeIcon icon={faBriefcase} />
-        <span>Experience</span>
+        <span>Skills and Experience</span>
       </NavLink>
       <NavLink to="/contact" onClick={closeMenu}>
         <FontAwesomeIcon icon={faEnvelope} />
@@ -78,7 +78,6 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Desktop Sidebar */}
       {!isMobile && (
         <div className="nav-bar desktop-sidebar">
           <Link className='logo' to='/'>
@@ -105,9 +104,6 @@ const Sidebar = () => {
           <div className={`mobile-menu-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu}>
             <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()}>
               {navLinks}
-              {/* <div className="mobile-social-links">
-                {socialLinks}
-              </div> */}
             </div>
           </div>
         </div>

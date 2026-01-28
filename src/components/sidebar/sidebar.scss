@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
+  font-family: 'Roboto', sans-serif;
 
   .logo {
     display: block;
@@ -31,6 +32,7 @@
     gap: 30px;
     flex: 1;
     justify-content: center;
+    font-family: 'Roboto', sans-serif;
 
     a {
       position: relative;
@@ -144,7 +146,8 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      margin-bottom: 0; // Changed from 40px
+      margin-bottom: 0; 
+      font-family: 'Roboto', sans-serif;
 
       a {
         display: flex;
