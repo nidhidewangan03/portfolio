@@ -20,15 +20,6 @@
     transform: translateY(-50%);
     width: 2px;
     height: 100%;
-    // background: linear-gradient(
-    //   to bottom,
-    //   transparent,
-    //   rgba(32, 255, 252, 0.3),
-    //   rgba(32, 255, 252, 0.5),
-    //   rgba(32, 255, 252, 0.5),
-    //   rgba(32, 255, 252, 0.3),
-    //   transparent
-    // );
     background: linear-gradient(
       to bottom,
       rgba(32, 255, 252, 0.3),
@@ -91,107 +82,54 @@
     }
   }
 
-  // #projects-container {
-  //   flex: 1;
-  //   padding: 40px 0;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 60px;
-    
-  //   .design-projects,
-  //   .development-projects {
-  //     width: 95%;
-  //     height: 50%;
-  //     border-color: aqua;
-
-  //     h1 {
-  //       font-size: clamp(36px, 7vw, 60px);
-  //       font-family: 'Roboto', sans-serif;
-  //       color: #ffffff;
-  //       font-weight: 400;
-  //       margin: 0 0 20px 0;
-  //       position: relative;
-  //       display: inline-block;
-  //       padding-left: 30px;
-
-  //     }
-      
-  //     .project-list {
-  //       padding-left: 30px;
-  //       list-style: none;
-        
-  //       li {
-  //         font-size: clamp(16px, 2vw, 18px);
-  //         font-family: 'Roboto', sans-serif;
-  //         font-weight: 300;
-  //         margin-bottom: 10px;
-  //         color: #cccccc;
-  //         position: relative;
-  //         padding-left: 15px;
-  //       }
-  //     }
-  //   }
-  // }
-
   #projects-container {
-  flex: 1;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: column;  
-  gap: 60px;
-
-  .design-projects,
-  .development-projects {
-    width: 95%;          
-    height: 30%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 30px 20px;
-    position: relative;
+    flex: 1;
+    padding: 40px 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    // border: #20fffc 2px solid;
+    flex-direction: column;  
+    gap: 60px;
 
-    // dark overlay for text readability
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      z-index: 0;
-    }
-
-    h1,
-    .project-list {
+    .design-projects,
+    .development-projects {
+      width: 95%;          
+      height: 30%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 30px 20px;
       position: relative;
-      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 0;
+      }
+
+      h1,
+      .project-list {
+        position: relative;
+        z-index: 1;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+
+      img {
+        max-width: 100px;
+        max-height: 100px;
+      }
     }
-
-    img {
-      max-width: 100px;
-      max-height: 100px;
-    }
   }
-
-
-  .design-projects-img {
-    // background-image: url('../../assests/hi.png'); 
-  }
-
-  .development-projects-img {
-    // background-image: url('../../assests/hi.png'); 
-  }
-}
-
 }
 
 // Desktop Layout (1025px and above)
 @media (min-width: 1025px) {
   .project-page {
     padding: 0px 60px;
-    // gap: 80px;
 
     .text-zone {
       padding: 80px 0;
@@ -269,14 +207,14 @@
   }
 }
 
-// Mobile Layout (up to 767px) - UPDATED FOR NEW STRUCTURE
+// Mobile Layout (up to 767px) - REORDERED FOR NEW STRUCTURE
 @media (max-width: 767px) {
   .project-page {
     top: 10%;
     padding: 20px 15px;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 90px);
     overflow-x: hidden; 
-    overflow-y:auto; 
+    overflow-y: auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -288,23 +226,27 @@
     }
 
     .text-zone {
-      padding: 0;
       width: 100%;
       max-width: 600px;
-      display:contents; 
+      // padding: 0;
+      display: flex;
+      flex-direction: column;
+      order: 1;
     }
 
-    // Projects container
     #projects-container {
-      padding: 0;
       width: 100%;
       max-width: 600px;
-      order: 2;
-      margin-top: 40px;
-      flex: none;
+      order: 3; 
+      padding: 0;
       
       .design-projects,
       .development-projects {
+        width: 100%;
+        height: auto;
+        // min-height: 200px;
+        // margin-bottom: 20px;
+        
         h1 {
           font-size: 28px;
           text-align: left;
@@ -314,19 +256,10 @@
             font-size: 30px;
           }
         }
-        
-        .project-list {
-          padding-left: 25px;
-          text-align: left;
-          
-          li {
-            font-size: 16px;
-          }
-        }
       }
     }
 
-    // Heading - comes first
+    // Heading - comes first within text-zone
     #project {
       order: 1;
       margin-bottom: 25px;
@@ -344,9 +277,9 @@
       }
     }
 
-    // Paragraph - comes third
+    // Paragraph - comes second within text-zone
     #project-para {
-      order: 3;
+      order: 2;
       width: 100%;
       text-align: center;
       margin-bottom: 30px;
@@ -386,14 +319,6 @@
           
           &::before {
             font-size: 25px;
-          }
-        }
-        
-        .project-list {
-          padding-left: 20px;
-          
-          li {
-            font-size: 14px;
           }
         }
       }
@@ -438,11 +363,12 @@
   }
 }
 
-// Animations
+
+/* Scroll animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -450,11 +376,20 @@
   }
 }
 
-@keyframes fadeInAnimation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+#project-para {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+#project-para :nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.design-projects {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.development-projects {
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  opacity: 0;
 }
