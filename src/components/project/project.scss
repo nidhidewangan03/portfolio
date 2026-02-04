@@ -7,10 +7,20 @@
   padding: 20px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
+  flex-direction: column;
+  overflow: hidden;
+
+  .content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+  }
 
   &::before {
     content: '';
@@ -91,36 +101,60 @@
 
     .design-projects,
     .development-projects {
-      width: 95%;          
-      height: 30%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 30px 20px;
+      width: 95%;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      border: 1px solid rgba(32, 255, 252, 0.5);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
 
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.55);
-        z-index: 0;
+      &:hover {
+        border-color: #20fffc;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(32, 255, 252, 0.2);
+        
+        .project-arrow {
+          transform: translateX(10px);
+        }
       }
 
-      h1,
-      .project-list {
+      .project-card {
+        padding: 40px 30px;
         position: relative;
         z-index: 1;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
       }
 
-      img {
-        max-width: 100px;
-        max-height: 100px;
+      .project-content {
+        position: relative;
+      }
+
+      .title-arrow-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+      }
+
+      h2 {
+        font-size: clamp(28px, 4vw, 36px);
+        font-family: 'Roboto', sans-serif;
+        color: #ffffff;
+        font-weight: 400;
+        margin: 0;
+        line-height: 1.2;
+        flex: 1;
+      }
+
+      .project-arrow {
+        font-size: 32px;
+        color: #20fffc;
+        transition: transform 0.3s ease;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
       }
     }
   }
@@ -158,18 +192,16 @@
       
       .design-projects,
       .development-projects {
-        h1 {
-          font-size: clamp(48px, 5vw, 64px);
-          
-          &::before {
-            font-size: 50px;
-          }
+        .project-card {
+          padding: 50px 40px;
         }
         
-        .project-list {
-          li {
-            font-size: 18px;
-          }
+        h2 {
+          font-size: clamp(40px, 5vw, 48px);
+        }
+        
+        .project-arrow {
+          font-size: 35px;
         }
       }
     }
@@ -199,27 +231,35 @@
       
       .design-projects,
       .development-projects {
-        h1::before {
-          font-size: 35px;
+        .project-card {
+          padding: 30px 25px;
+        }
+        
+        h2 {
+          font-size: clamp(24px, 3vw, 28px);
+        }
+        
+        .project-arrow {
+          font-size: 28px;
         }
       }
     }
   }
 }
 
-// Mobile Layout (up to 767px) - REORDERED FOR NEW STRUCTURE
+// Mobile Layout (up to 767px)
 @media (max-width: 767px) {
   .project-page {
     top: 10%;
     padding: 20px 15px;
     min-height: calc(100vh - 90px);
-    overflow-x: hidden; 
-    overflow-y: auto; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .content-wrapper {
+      flex-direction: column;
+      gap: 40px;
+    }
 
     &::before {
       display: none;
@@ -228,40 +268,43 @@
     .text-zone {
       width: 100%;
       max-width: 600px;
-      // padding: 0;
-      display: flex;
-      flex-direction: column;
+      padding: 0;
       order: 1;
     }
 
     #projects-container {
       width: 100%;
       max-width: 600px;
-      order: 3; 
+      order: 2;
       padding: 0;
+      gap: 30px;
       
       .design-projects,
       .development-projects {
         width: 100%;
         height: auto;
-        // min-height: 200px;
-        // margin-bottom: 20px;
         
-        h1 {
-          font-size: 28px;
-          text-align: left;
-          padding-left: 25px;
-          
-          &::before {
-            font-size: 30px;
-          }
+        .project-card {
+          padding: 25px 20px;
+        }
+        
+        .title-arrow-container {
+          flex-direction: row;
+          align-items: center;
+        }
+        
+        h2 {
+          font-size: 22px;
+        }
+        
+        .project-arrow {
+          font-size: 24px;
+          flex-shrink: 0;
         }
       }
     }
 
-    // Heading - comes first within text-zone
     #project {
-      order: 1;
       margin-bottom: 25px;
       width: 100%;
 
@@ -277,13 +320,10 @@
       }
     }
 
-    // Paragraph - comes second within text-zone
     #project-para {
-      order: 2;
       width: 100%;
       text-align: center;
       margin-bottom: 30px;
-      flex: none;
 
       p {
         text-align: center;
@@ -313,13 +353,16 @@
     #projects-container {
       .design-projects,
       .development-projects {
-        h1 {
-          font-size: 22px;
-          padding-left: 20px;
-          
-          &::before {
-            font-size: 25px;
-          }
+        .project-card {
+          padding: 20px 15px;
+        }
+        
+        h2 {
+          font-size: 18px;
+        }
+        
+        .project-arrow {
+          font-size: 20px;
         }
       }
     }
@@ -336,8 +379,6 @@
 // Landscape mode on mobile
 @media (max-height: 600px) and (max-width: 767px) {
   .project-page {
-    display: flex;
-    flex-direction: column;
     min-height: auto;
     padding: 30px 20px;
 
@@ -351,7 +392,7 @@
 
     #projects-container {
       margin-top: 20px;
-      gap: 30px;
+      gap: 20px;
     }
 
     #project-para {
@@ -363,8 +404,7 @@
   }
 }
 
-
-/* Scroll animations */
+/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
