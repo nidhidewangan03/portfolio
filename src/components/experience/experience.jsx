@@ -1,15 +1,19 @@
 import React from 'react'
+import './experience.scss'
 
 const Experience = () => {
   return (
-    <div className='container experience-page'>
-      <div className='experience'>
-        <div className='heading'>
-          <h1>Experience</h1>
-        </div> 
-        <div>
-          <div class="vl"></div>
-        </div>    
+    <div className='skills-experience-page'>
+      <div className='text-zone'>
+        <div id='skills'>
+          <h1>Tech Stack I'm familiar with</h1>
+        </div>
+        
+        <div id='project-para'>
+          <p>
+          Primarily focused on the Javascript ecosystem, but always eager to explore and learn new technologies.
+          </p>
+        </div>
       </div>
     </div>
   )

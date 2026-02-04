@@ -1,11 +1,373 @@
-.experinece{
-    .heading h1{
-        font-size: 30px;
-        color: #22fffc;
-        z-index: 1;
+.skills-experience-page {
+  top: 5%;
+  width: 100%;
+  min-height: 100vh;
+  color: #ffffff;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+
+  .text-zone {
+    position: relative;
+    z-index: 2;
+    background: inherit;
+    flex: 1;
+    padding: 40px 0;
+
+    #skills {
+      h1 {
+        font-size: clamp(36px, 7vw, 60px);
+        font-family: 'Roboto', sans-serif;
+        color: #ffffff;
+        font-weight: 400;
+        margin: 0;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          width: 100px;
+          height: 3px;
+          background: #20fffc;
+        }
+      }
     }
-    .vl {
-        border-left: 6px solid #fff;
-        height: 500px;
+  }
+
+  #project-para {
+    margin-bottom: 40px;
+    
+    p {
+      font-size: clamp(16px, 2.5vw, 20px);
+      line-height: 1.8;
+      color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      margin: 0 0 30px 0;
+      max-width: 800px;
+      animation: fadeInUp 1s ease-out;
     }
+  }
+
+  .tech-stack-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 0;
+
+    .tech-category {
+      .category-title {
+        font-size: 24px;
+        font-family: 'Roboto', sans-serif;
+        color: #20fffc;
+        margin-bottom: 20px;
+        font-weight: 500;
+        position: relative;
+        padding-left: 15px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 5px;
+          height: 20px;
+          background: #20fffc;
+        }
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        .skill-item {
+          padding: 10px 20px;
+          background: rgba(32, 255, 252, 0.1);
+          border: 1px solid rgba(32, 255, 252, 0.3);
+          border-radius: 25px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 16px;
+          color: #ffffff;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(32, 255, 252, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(32, 255, 252, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Desktop Layout (1025px and above)
+@media (min-width: 1025px) {
+  .skills-experience-page {
+    padding: 0px 60px;
+    gap: 80px;
+
+    .text-zone {
+      padding: 80px 0;
+
+      #skills {
+        h1 {
+          font-size: clamp(48px, 5vw, 64px);
+          
+          &::after {
+            width: 150px;
+          }
+        }
+      }
+    }
+
+    #project-para {
+      p {
+        font-size: 20px;
+        line-height: 1.9;
+      }
+    }
+
+    .tech-stack-container {
+      padding: 80px 0;
+      gap: 50px;
+      
+      .tech-category {
+        .category-title {
+          font-size: 28px;
+          margin-bottom: 25px;
+        }
+
+        .skills-list {
+          gap: 20px;
+
+          .skill-item {
+            font-size: 18px;
+            padding: 12px 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Tablet Layout (768px to 1024px)
+@media (min-width: 768px) and (max-width: 1024px) {
+  .skills-experience-page {
+    padding: 40px;
+    gap: 40px;
+    flex-direction: column;
+
+    .text-zone {
+      width: 100%;
+
+      #skills {
+        h1::after {
+          width: 120px;
+        }
+      }
+    }
+
+    #project-para {
+      p {
+        font-size: clamp(17px, 2vw, 19px);
+      }
+    }
+
+    .tech-stack-container {
+      width: 100%;
+      
+      .tech-category {
+        .category-title {
+          font-size: 22px;
+        }
+
+        .skills-list {
+          .skill-item {
+            font-size: 15px;
+            padding: 8px 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mobile Layout (up to 767px)
+@media (max-width: 767px) {
+  .skills-experience-page {
+    top: 10%;
+    padding: 20px 15px;
+    min-height: calc(100vh - 70px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+
+    .text-zone {
+      width: 100%;
+      max-width: 600px;
+      padding: 0;
+      text-align: center;
+      order: 1;
+
+      #skills {
+        margin-bottom: 25px;
+
+        h1 {
+          font-size: 32px;
+          
+          &::after {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -8px;
+            width: 80px;
+          }
+        }
+      }
+    }
+
+    #project-para {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+      order: 2;
+
+      p {
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 0;
+        max-width: 100%;
+      }
+    }
+
+    .tech-stack-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 0;
+      margin-top: 30px;
+      order: 3;
+
+      .tech-category {
+        margin-bottom: 30px;
+
+        .category-title {
+          font-size: 20px;
+          text-align: center;
+          padding-left: 0;
+          margin-bottom: 15px;
+
+          &::before {
+            display: none;
+          }
+        }
+
+        .skills-list {
+          justify-content: center;
+          gap: 10px;
+
+          .skill-item {
+            font-size: 14px;
+            padding: 8px 16px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Very small devices (up to 480px)
+@media (max-width: 480px) {
+  .skills-experience-page {
+    #skills {
+      h1 {
+        font-size: 24px;
+        
+        &::after {
+          width: 60px;
+          bottom: -6px;
+        }
+      }
+    }
+
+    #project-para {
+      p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    }
+
+    .tech-stack-container {
+      .tech-category {
+        .category-title {
+          font-size: 18px;
+        }
+
+        .skills-list {
+          .skill-item {
+            font-size: 12px;
+            padding: 6px 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 600px) and (max-width: 767px) {
+  .skills-experience-page {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    padding: 30px 20px;
+
+    #skills {
+      margin-bottom: 15px;
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+
+    .tech-stack-container {
+      margin-top: 20px;
+      
+      .tech-category {
+        margin-bottom: 20px;
+      }
+    }
+
+    #project-para {
+      p {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
