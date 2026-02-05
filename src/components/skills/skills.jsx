@@ -1,10 +1,9 @@
 import React from 'react'
-import './experience.scss'
+import './skills.scss'
 
-const Experience = () => {
-  const frontendSkills = ['HTML5', 'CSS3', 'JavaScript', 'React', 'TypeScript', 'Next.js', 'Redux', 'SASS/SCSS'];
-  // const backendSkills = ['Node.js', 'Express', 'MongoDB', 'Firebase', 'REST APIs', 'GraphQL', 'Python'];
-  const toolsSkills = ['Git', 'GitHub', 'Docker', 'VS Code', 'Figma', 'Webpack', 'Jest'];
+const Skills = () => {
+  const frontendSkills = ['HTML5', 'CSS3', 'JavaScript', 'React', 'TypeScript', 'Next.js'];
+  const toolsSkills = ['Git', 'GitHub', 'VS Code', 'Figma',];
 
   return (
     <div className='skills-experience-page'>
@@ -54,4 +53,4 @@ const Experience = () => {
   )
 }
 
-export default Experience
+export default Skills

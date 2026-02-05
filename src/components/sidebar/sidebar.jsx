@@ -65,9 +65,9 @@ const Sidebar = () => {
         <FontAwesomeIcon icon={faStar} />
         <span>Project</span>
       </NavLink>
-      <NavLink to="/skills-and-experience" onClick={closeMenu}>
+      <NavLink to="/skills" onClick={closeMenu}>
         <FontAwesomeIcon icon={faBriefcase} />
-        <span>Skills and Experience</span>
+        <span>Skills</span>
       </NavLink>
       <NavLink to="/contact" onClick={closeMenu}>
         <FontAwesomeIcon icon={faEnvelope} />

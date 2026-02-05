@@ -14,7 +14,6 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -231,7 +230,7 @@
   .skills-experience-page {
     top: 10%;
     padding: 20px 15px;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 90px);
     overflow-x: hidden;
     overflow-y: auto;
 
